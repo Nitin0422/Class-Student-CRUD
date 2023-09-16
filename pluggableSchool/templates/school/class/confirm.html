@@ -1,0 +1,17 @@
+<!-- templates/product/confirm_delete.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete</title>
+</head>
+<body>
+    <h1>Confirm Deletion</h1>
+    <p>Are you sure you want to delete class: "{{ class.class_name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{%url 'pluggableSchool:index'%}">Cancel</a>
+</body>
+</html>

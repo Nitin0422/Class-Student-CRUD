@@ -1,0 +1,71 @@
+<h3>Registered Classes:</h3>
+{% if class_list %}
+<table style="width: 100%; border-collapse: collapse">
+  <thead>
+    <tr>
+      <td
+        style="
+          background-color: #f2f2f2;
+          text-align: left;
+          padding: 10px;
+          border: 1px solid #ddd;
+        "
+      >
+        Class ID
+      </td>
+      <td
+        style="
+          background-color: #f2f2f2;
+          text-align: left;
+          padding: 10px;
+          border: 1px solid #ddd;
+        "
+      >
+        Class Name
+      </td>
+      <td
+      style="
+        background-color: #f2f2f2;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #ddd;
+      "
+    >
+      Block
+    </td>
+      <td
+        style="
+          background-color: #f2f2f2;
+          text-align: left;
+          padding: 10px;
+          border: 1px solid #ddd;
+        "
+      >
+        Actions
+      </td>
+    </tr>
+  </thead>
+
+  <tbody>
+    {%for class in class_list%}
+    <tr>
+      <td style="padding: 10px; border: 1px solid #ddd">{{class.id}}</td>
+      <td style="padding: 10px; border: 1px solid #ddd">
+        <a href="{%url 'pluggableSchool:showStudents' class.id %}">
+          {{class.class_name}}</a
+        >
+      </td>
+      <td style="padding: 10px; border: 1px solid #ddd">{{class.block}}</td>
+      <td style="padding: 10px; border: 1px solid #ddd">
+        <a href="{%url 'pluggableSchool:classDetails' class.id %}"> Edit </a> <br>
+        <a href="{%url 'pluggableSchool:deleteClass' class.id%}"> Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h4>No classes has been registered yet</h4>
+{% endif %}
+<hr />
+<a href="{%url 'pluggableSchool:addClass' %}"> Add Class </a>
